@@ -1,15 +1,16 @@
-if (!requireNamespace("BiocManager", quietly = TRUE))
-  install.packages("BiocManager")
-
-BiocManager::install("karyoploteR")
-BiocManager::install("BSgenome.Hsapiens.1000genomes.hs37d5")
+#if (!requireNamespace("BiocManager", quietly = TRUE))
+#  install.packages("BiocManager")
+#BiocManager::install("karyoploteR")
+#BiocManager::install("BSgenome.Hsapiens.1000genomes.hs37d5")
 
 library(karyoploteR)
 library(BSgenome.Hsapiens.1000genomes.hs37d5)
 
-setwd("/Users/stefanolise/Documents/ROSETREES/TR019/COVERAGE_PROFILE/")
-
-covHC <- read.csv("TR019.100K.cov.gz",sep = "\t",header = T )
+pat_id <-'TR019'
+work_dir <-  paste0("/Users/stefanolise/Documents/ROSETREES/",pat_id,"/COVERAGE_PROFILE")
+setwd(work_dir)
+cov_file <- paste0(pat_id,".100K.cov.gz")
+covHC <- read.csv(cov_file,sep = "\t",header = T )
 covHC <- subset(covHC,X.chr == 1 | X.chr == 2 | X.chr == 3 | X.chr == 4 | X.chr == 5 | X.chr == 6 |
                 X.chr == 7 | X.chr == 8 | X.chr == 9 | X.chr == 10 | X.chr == 11 | X.chr == 12 |
                 X.chr == 13 | X.chr == 14 | X.chr == 15 | X.chr == 16 | X.chr == 17 | X.chr == 18 |
