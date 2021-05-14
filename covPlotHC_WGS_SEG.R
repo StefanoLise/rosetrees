@@ -1,13 +1,19 @@
-if (!requireNamespace("BiocManager", quietly = TRUE))
-  install.packages("BiocManager")
+#if (!requireNamespace("BiocManager", quietly = TRUE))
+#  install.packages("BiocManager")
 
-BiocManager::install("karyoploteR")
-BiocManager::install("BSgenome.Hsapiens.1000genomes.hs37d5")
+#BiocManager::install("karyoploteR")
+#BiocManager::install("BSgenome.Hsapiens.1000genomes.hs37d5")
+library(karyoploteR)
+library(BSgenome.Hsapiens.1000genomes.hs37d5)
 
-setwd("/Users/stefanolise/Documents/ROSETREES/TR064/COVERAGE_PROFILE/")
+pat_id <-'TR019'
+sample_gl <- paste0(pat_id,"_GL.4x.1M.seg.gz")
+sample_bl <- paste0(pat_id,"_GL.4x.1M.seg.gz")
 
-cov_gl <- read.csv("TR064_GL.1M.seg.gz",sep = "\t",header = T )
-cov_bl <- read.csv("TR064_BL.1M.seg.gz",sep = "\t",header = T )
+work_dir <- paste0("/Users/stefanolise/Documents/ROSETREES/",pat_id,"/COVERAGE_PROFILE/")
+setwd(work_dir)
+cov_gl <- read.csv(sample_gl,sep = "\t",header = T )
+cov_bl <- read.csv(sample_bl,sep = "\t",header = T )
 cov_bl <- cov_bl[cov_gl$count !=0,]
 cov_gl <- cov_gl[cov_gl$count !=0,]
 

@@ -4,6 +4,9 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
 BiocManager::install("karyoploteR")
 BiocManager::install("BSgenome.Hsapiens.1000genomes.hs37d5")
 
+library(karyoploteR)
+library(BSgenome.Hsapiens.1000genomes.hs37d5)
+
 setwd("/Users/stefanolise/Documents/ROSETREES/TR019/COVERAGE_PROFILE/")
 
 covHC <- read.csv("TR019.100K.cov.gz",sep = "\t",header = T )
